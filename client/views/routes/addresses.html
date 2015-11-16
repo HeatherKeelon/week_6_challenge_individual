@@ -1,0 +1,12 @@
+<div class="container">
+    <span>Select Person</span>
+<select ng-click="findAddresses(selectedPerson.name)" ng-model="selectedPerson" ng-options="people as people.name for people in people"></select>
+</div>
+
+
+<div class="address-block">
+    <div ng-repeat="address in addresses">
+        <address-output info="address"></address-output>
+
+    </div>
+</div>

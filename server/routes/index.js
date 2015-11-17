@@ -52,6 +52,34 @@ router.get('/addresses', function(req, res){
     });
 });
 
+router.get('/orders', function(req, res){
+    var orders=[];
+    pg.connect(connectionString, function(err, client, done){
+    var query=client.query("SELECT users.name, addresses.*, orders.* " +
+        "FROM orders " +
+        "JOIN addresses " +
+        "ON addresses.address_id=orders.ship_address_id " +
+        "JOIN users " +
+        "ON users.id=orders.user_id " +
+        "WHERE users.name=$1 AND orders.order_date>$2 AND orders.order_date<$3",
+    [req.query.name, req.query.startdate, req.query.enddate]);
+
+        query.on('row', function(row){
+            orders.push(row);
+        });
+
+        query.on('end', function(){
+            client.end();
+            return res.json(orders);
+        });
+
+        if (err){
+            console.log("Error getting addresses ", err);
+        }
+
+    });
+});
+
 
 router.get('/*', function(req, res, next){
     var file = req.params[0] || 'assets/views/index.html';

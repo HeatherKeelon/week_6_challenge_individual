@@ -1,1 +1,23 @@
-<p>this will be the orders page</p>
+<div class="container">
+
+</div>
+
+<div class="container find-ppl">
+    <form>
+        <label for="name">Select Person</label>
+        <select name="name" id="name" ng-model="dates.name" ng-options="people as people.name for people in people"></select>
+        <label for="startdate">Begin Date (YYYY-MM-DD):</label>
+        <input type="text" id="startdate" name="startdate" ng-model="dates.startdate" placeholder="Enter Start Date">
+        <label for="enddate">End Date(YYYY-MM-DD): </label>
+        <input type="text" id="enddate" name="enddate" ng-model="dates.enddate" placeholder="Enter End Date">
+    </form>
+    <button ng-click="submitName(dates)" class="btn btn-info submit">Submit</button>
+
+</div>
+
+<div class="orders-block">
+    <div ng-repeat="order in totalorders">
+        <order-output info="order"></order-output>
+
+    </div>
+</div>

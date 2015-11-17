@@ -12,7 +12,8 @@ myApp.config(['$routeProvider', function($routeProvider){
         }).
 
     when('/orders', {
-            templateUrl: "/assets/views/routes/orders.html"
+            templateUrl: "/assets/views/routes/orders.html",
+            controller: "MainController"
 
         }).
 

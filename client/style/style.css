@@ -1,3 +1,13 @@
 h1 {
     color: blue;
 }
+
+.order-box{
+ margin-top: 10px;
+    padding-left: 20px;
+    border-top: 1px solid black;
+}
+
+.address-orders {
+    padding-left: 10px;
+}

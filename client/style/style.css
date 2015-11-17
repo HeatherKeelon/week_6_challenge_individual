@@ -11,3 +11,7 @@ h1 {
 .address-orders {
     padding-left: 10px;
 }
+
+.money-box{
+    font-weight: bold;
+}

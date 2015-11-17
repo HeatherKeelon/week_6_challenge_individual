@@ -6,6 +6,7 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http){
     $scope.dates = {};
     $scope.totalorders=[];
     $scope.totalamount=[];
+    $scope.money=0;
 
 
 
@@ -33,19 +34,22 @@ myApp.controller('MainController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.submitName = function(dates){
-        var amount = "";
+        var amount = [];
+
         dates.name=dates.name['name'];
-        console.log(dates);
         $http.get('/orders', {params: {name:dates.name, startdate:dates.startdate, enddate:dates.enddate}}).then(function(response){
             $scope.totalorders=response.data;
 
-            console.log("total orders", $scope.totalorders);
             var totalorders=$scope.totalorders;
             for (orders in totalorders){
-                var money=parseInt(totalorders[orders].amount);
-                amount += money;
-                console.log("This is amount", amount);
+               amount.push(parseFloat(totalorders[orders].amount));
+
             };
+
+            for (var i=0; i<amount.length; i++){
+                $scope.money += amount[i];
+            }
+
         });
         $scope.dates={};
     };

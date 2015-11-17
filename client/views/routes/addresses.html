@@ -1,6 +1,6 @@
 <div class="container">
     <span>Select Person</span>
-<select ng-click="findAddresses(selectedPerson.name)" ng-model="selectedPerson" ng-options="people as people.name for people in people"></select>
+<select ng-change="findAddresses(selectedPerson.name)" ng-model="selectedPerson" ng-options="people as people.name for people in people"></select>
 </div>
 
 
